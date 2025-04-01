@@ -1,0 +1,241 @@
+:root {
+  --primary: #e63946;
+  --primary-dark: #d32f2f;
+  --secondary: #f8fafc;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --gray: #94a3b8;
+  --white: #ffffff;
+}
+
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* ✅ Ensure content scrolls without overriding background */
+.main-content {
+  background-color: #f8f9fa; /* Light background */
+  min-height: 100vh; /* Ensures full height */
+  padding-top: 80px; /* Prevents overlap with navbar */
+  padding-bottom: 50px; /* Extra padding at bottom */
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.dashboard-brand i {
+  font-size: 1.75rem;
+}
+
+/* Navigation */
+.dashboard-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboard-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-link:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dashboard-link.active {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.dashboard-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 3px;
+}
+
+/* User Actions */
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Notifications */
+.notification-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--white);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* User Avatar */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--white);
+  cursor: pointer;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ✅ Updated Button Styles */
+button {
+  cursor: pointer; /* Makes sure buttons are clickable */
+  z-index: 10; /* Ensures buttons are above other elements */
+  position: relative; /* Ensures it's clickable in layers */
+  border: none;
+  outline: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Primary Button */
+.primary-btn {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.primary-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.secondary-btn {
+  background: var(--gray);
+  color: var(--white);
+}
+
+.secondary-btn:hover {
+  background: #6b7280; /* Slightly darker gray */
+  transform: translateY(-2px);
+}
+
+/* Disabled Buttons */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CTA Buttons */
+.cta-buttons button {
+  cursor: pointer !important;
+  z-index: 1000 !important;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+      padding: 0 1rem;
+  }
+  
+  .dashboard-brand span {
+      display: none;
+  }
+  
+  .dashboard-link span {
+      display: none;
+  }
+  
+  .dashboard-link {
+      padding: 0.75rem;
+      font-size: 1.25rem;
+  }
+  
+  .dashboard-actions {
+      gap: 1rem;
+  }
+
+  /* Stack buttons on smaller screens */
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
